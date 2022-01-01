@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_APP"
         mc:Ignorable="d"
-        Title="Humans" Height="180" Width="260">
+        Title="Humans" Height="250" Width="260">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -20,8 +21,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0">Humans</Label>
-        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Humans}">
+        <Label Grid.Column="0" Grid.Row="0"  Content="Humans"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" >
+            <Run Text="BloodType: "/>
+            <Run Text="{Binding SelectedHuman.BloodType}"/>
+        </TextBlock>
+        <ListBox Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Humans}" SelectedItem="{Binding SelectedHuman}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=Name}" 
@@ -30,7 +35,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="5,0,0,0">
             <TextBox Text="{Binding NewName, UpdateSourceTrigger = PropertyChanged}" />
             <Button Margin="0,5,0,0" Command="{Binding AddNameCommand}" Content="Add Name" />
         </StackPanel>

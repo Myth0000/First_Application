@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Column="0">Humans</Label>
-        <ListBox Grid.Row="1" ItemsSource="{Binding Humans}">
+        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Humans}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=Name}" 

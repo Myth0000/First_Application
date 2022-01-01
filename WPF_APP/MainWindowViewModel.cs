@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
@@ -14,10 +13,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     public ObservableCollection<Human> Humans { get; set; } = new();
 
-    public MainWindowViewModel()
-    {
-        AddNameCommand = new(AddName, CanAddName);
-    }
+    public MainWindowViewModel() => AddNameCommand = new(AddName, CanAddName);
 
     public bool CanAddName() => !string.IsNullOrWhiteSpace(NewName);
 
@@ -26,9 +22,7 @@ public partial class MainWindowViewModel : ObservableObject
         Humans.Add(new() { Name = NewName });
         NewName = "";
     }
-
 }
-
 
 public class Human
 {
@@ -42,6 +36,4 @@ public class Human
         for (var i = 0; i < 9; i++) { x += x * 10 + (uint)Ran.Next(0, 10); }
         SocialSecurityNumber = x.ToString("000-00-0000");
     }
-
-
 }

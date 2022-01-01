@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:WPF_APP"
         mc:Ignorable="d"
         Title="Names" Height="180" Width="260">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -18,12 +21,12 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Column="0">Names</Label>
-        <ListBox Grid.Row="1" x:Name="FirstNames" ToolTip="AbelAbernathy"/>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Names}" ToolTip="AbelAbernathy"/>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
-            <TextBox x:Name="txtName"></TextBox>
-            <Button x:Name="btnAdd" Margin="0,5,0,0" Click="ButtonAddName_Click">Add Name</Button>
+            <TextBox Text="{Binding NewName}" />
+            <Button Margin="0,5,0,0" Command="{Binding AddNameCommand}" Content="Add Name" />
         </StackPanel>
-        
+
     </Grid>
 </Window>

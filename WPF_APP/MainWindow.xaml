@@ -21,7 +21,14 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Column="0">Names</Label>
-        <ListBox Grid.Row="1" ItemsSource="{Binding Names}" ToolTip="AbelAbernathy"/>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Names}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Name}" 
+                               ToolTipService.ToolTip="{Binding Path=SocialSecurityNumber}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
             <TextBox Text="{Binding NewName}" />
